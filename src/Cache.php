@@ -143,15 +143,21 @@ abstract class Xapp_Cache
 
 
     /**
-     * check if the cache class has > 0 instance registered or not returning boolean false if not
-     * and boolean true if so
+     * check if instance is set. without first argument will check only if > 0 instance is set. with first argument name
+     * space identifier will check if instance for identifier is set returning boolean true if so false if not
      *
      * @error 15303
+     * @param null|string $ns expects option namespace identifier
      * @return bool
      */
-    public static function hasInstance()
+    public static function hasInstance($ns = null)
     {
-        return ((self::$_instance !== null) ? true : false);
+        if($ns !== null)
+        {
+            return ((array_key_exists(trim((string)$ns), self::$_instances)) ? true : false);
+        }else {
+            return ((self::$_instance !== null) ? true : false);
+        }
     }
 
 
