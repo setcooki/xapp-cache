@@ -184,18 +184,18 @@ abstract class Xapp_Cache
      *
      * @error 15305
      * @param string $method expects the function name
-     * @param array $parameters expects the overloading parameters
+     * @param array $params expects the overloading $params
      * @return mixed
      * @throws Xapp_Cache_Exception
      */
-    public static function __callStatic($method, $parameters)
+    public static function __callStatic($method, $params)
    	{
         $instance = null;
 
-        if(sizeof($parameters >= 2) && array_key_exists((string)$parameters[0], self::$_instances))
+        if(sizeof($params) >= 2 && array_key_exists((string)$params[0], self::$_instances))
         {
-            $instance = self::$_instances[(string)$parameters[0]];
-            $parameters = array_slice($parameters, 1);
+            $instance = self::$_instances[(string)$params[0]];
+            $params = array_slice($params, 1);
         }else{
             $instance = self::$_instance;
         }
@@ -203,7 +203,7 @@ abstract class Xapp_Cache
         {
             if(method_exists($instance, $method))
             {
-                return call_user_func_array(array($instance, $method), $parameters);
+                return call_user_func_array(array($instance, $method), $params);
             }else{
                 throw new Xapp_Cache_Exception(xapp_sprintf(_("method: %s can not be called statically"), $method), 1530501);
             }
