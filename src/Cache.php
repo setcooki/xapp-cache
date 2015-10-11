@@ -162,16 +162,25 @@ abstract class Xapp_Cache
 
 
     /**
-     * create a hash from a string using the algorithm passed in second parameter
+     * create a hash from a mixed value passed in first argument using the algorithm passed in second parameter
      *
      * @error 15304
-     * @param string $string expects the string to hash
+     * @param string|mixed $mixed expects the object to hash which can be anything
      * @param string $algo expects a valid hash algorithm
      * @return string
      */
-    public static function hash($string, $algo = 'sha1')
+    public static function hash($mixed, $algo = 'sha1', &$tmp = array())
     {
-        return hash(strtolower(trim((string)$algo)), trim((string)$string));
+        if(is_array($mixed) || is_object($mixed))
+        {
+            foreach((array)$mixed as $m)
+            {
+                self::hash($m, $algo, $tmp);
+            }
+        }else{
+            $tmp[] = $mixed;
+        }
+        return hash(strtolower(trim((string)$algo)), implode('', $tmp));
     }
 
 
