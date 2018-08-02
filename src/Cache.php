@@ -74,7 +74,7 @@ abstract class Xapp_Cache
      * @param null|string $ns expects optional instance namespace identifier
      * @param null|string $driver expects the cache driver string
      * @param null|mixed $options expects xapp option array or object
-     * @return Xapp_Cache_Driver concrete xapp cache driver implementation instance
+     * @return Xapp_Cache concrete xapp cache driver implementation instance
      * @throws Xapp_Cache_Exception
      */
     public static function instance($ns = null, $driver = null, $options = null)

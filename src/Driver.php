@@ -14,7 +14,7 @@ xapp_import('xapp.Cache.Driver.Exception');
  * @error 154
  * @author Frank Mueller <set@cooki.me>
  */
-abstract class Xapp_Cache_Driver extends Xapp_Cache implements Xapp_Singleton_Interface
+abstract class Xapp_Cache_Driver
 {
     /**
      * option to auto purge all expired items in class destructor
@@ -110,7 +110,7 @@ abstract class Xapp_Cache_Driver extends Xapp_Cache implements Xapp_Singleton_In
      * @error 15401
      * @param null|mixed $options expects optional xapp option array or object
      */
-    protected function __construct($options = null)
+    public function __construct($options = null)
     {
         xapp_init_options($options, $this);
         $this->init();
