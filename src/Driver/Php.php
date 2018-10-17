@@ -97,17 +97,17 @@ class Xapp_Cache_Driver_Php extends Xapp_Cache_Driver
             $dir = new SplFileInfo(xapp_get_option(self::PATH, $this));
             if(!$dir->isReadable())
             {
-                throw new Xapp_Cache_Driver_Exception(_("cache directory is not readable"), 1620201);
+                throw new Xapp_Cache_Driver_Exception(__("cache directory is not readable"), 1620201);
             }
             if(!$dir->isWritable())
             {
-                throw new Xapp_Cache_Driver_Exception(_("cache directory is not writable"), 1620202);
+                throw new Xapp_Cache_Driver_Exception(__("cache directory is not writable"), 1620202);
             }
             xapp_set_option(self::PATH, rtrim($dir->getRealPath(), DS) . DS, $this);
       	}
         catch(Exception $e)
         {
-            throw new Xapp_Cache_Driver_Exception(xapp_sprintf(_("cache directory file info error: %d, %s"), $e->getCode(), $e->getMessage()), 1620203);
+            throw new Xapp_Cache_Driver_Exception(xapp_sprintf(__("cache directory file info error: %d, %s"), $e->getCode(), $e->getMessage()), 1620203);
         }
     }
 

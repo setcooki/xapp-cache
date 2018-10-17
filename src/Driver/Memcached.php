@@ -170,7 +170,7 @@ class Xapp_Cache_Driver_Memcached extends Xapp_Cache_Driver
     {
         if(!extension_loaded('memcached'))
         {
-            throw new Xapp_Cache_Driver_Exception(_("memcached is not supported by this system"), 1580101);
+            throw new Xapp_Cache_Driver_Exception(__("memcached is not supported by this system"), 1580101);
       	}
         if(xapp_is_option(self::COMPRESS, $this))
         {
@@ -196,7 +196,7 @@ class Xapp_Cache_Driver_Memcached extends Xapp_Cache_Driver
                 {
                     if(!$this->_memcached->setOption((int)$k, $v))
                     {
-                        throw new Xapp_Cache_Driver_Exception(xapp_sprintf(_("unable to set memcached option: %s"), $k), 1580102);
+                        throw new Xapp_Cache_Driver_Exception(xapp_sprintf(__("unable to set memcached option: %s"), $k), 1580102);
                     }
                 }
             }
@@ -212,15 +212,15 @@ class Xapp_Cache_Driver_Memcached extends Xapp_Cache_Driver
                 $server = (array)$server;
                 if(!array_key_exists('host', $server))
                 {
-                    throw new Xapp_Cache_Driver_Exception(_("memcached parameter: host must be set"), 1580103);
+                    throw new Xapp_Cache_Driver_Exception(__("memcached parameter: host must be set"), 1580103);
                 }
                 if(!array_key_exists('port', $server))
                 {
-                    throw new Xapp_Cache_Driver_Exception(_("memcached parameter: port must be set"), 1580104);
+                    throw new Xapp_Cache_Driver_Exception(__("memcached parameter: port must be set"), 1580104);
                 }
                 if(!$this->_memcached->addServer($server['host'], (int)$server['port'], ((array_key_exists('weight', $server)) ? (int)$server['weight'] : 0)))
                 {
-                    throw new Xapp_Cache_Driver_Exception(xapp_sprintf(_("unable to add server for host: %s and port: %d"), array($server['host'], $server['port'])), 1580105);
+                    throw new Xapp_Cache_Driver_Exception(xapp_sprintf(__("unable to add server for host: %s and port: %d"), array($server['host'], $server['port'])), 1580105);
                 }
             }
         }

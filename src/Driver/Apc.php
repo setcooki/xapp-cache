@@ -90,7 +90,7 @@ class Xapp_Cache_Driver_Apc extends Xapp_Cache_Driver
     {
         if(!extension_loaded('apc'))
         {
-            throw new Xapp_Cache_Driver_Exception(_("apc extension is not supported by this system"), 1610101);
+            throw new Xapp_Cache_Driver_Exception(__("apc extension is not supported by this system"), 1610101);
         }
     }
 

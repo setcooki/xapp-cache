@@ -143,7 +143,7 @@ class Xapp_Cache_Driver_Redis extends Xapp_Cache_Driver
     {
         if(!extension_loaded('redis'))
         {
-            throw new Xapp_Cache_Driver_Exception(_("redis is not supported by this system"), 17500201);
+            throw new Xapp_Cache_Driver_Exception(__("redis is not supported by this system"), 17500201);
       	}
         if(class_exists('Redis'))
         {
@@ -166,7 +166,7 @@ class Xapp_Cache_Driver_Redis extends Xapp_Cache_Driver
                         {
                             if(!$this->_redis->setOption($key, $val))
                             {
-                                throw new Xapp_Cache_Driver_Exception(xapp_sprintf(_("redis set option: %s failed"), $key), 17500205);
+                                throw new Xapp_Cache_Driver_Exception(xapp_sprintf(__("redis set option: %s failed"), $key), 17500205);
                             }
                         }
                     }
@@ -174,21 +174,21 @@ class Xapp_Cache_Driver_Redis extends Xapp_Cache_Driver
                     {
                         if(!$this->_redis->auth(xapp_get_option(self::PASSWORD, $this)))
                         {
-                            throw new Xapp_Cache_Driver_Exception(_("redis auth not successful"), 17500203);
+                            throw new Xapp_Cache_Driver_Exception(__("redis auth not successful"), 17500203);
                         }
                     }
                     if(xapp_has_option(self::DB, $this))
                     {
                         if(!$this->_redis->select(xapp_get_option(self::DB)))
                         {
-                            throw new Xapp_Cache_Driver_Exception(_("redis select db not successful"), 17500204);
+                            throw new Xapp_Cache_Driver_Exception(__("redis select db not successful"), 17500204);
                         }
                     }
                 }
             }
             catch(RedisException $e)
             {
-                throw new Xapp_Cache_Driver_Exception(xapp_sprintf(_("unable to connect to redis: %s"), $e->getMessage()), 17500202);
+                throw new Xapp_Cache_Driver_Exception(xapp_sprintf(__("unable to connect to redis: %s"), $e->getMessage()), 17500202);
             }
         }
     }

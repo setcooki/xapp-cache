@@ -107,17 +107,17 @@ class Xapp_Cache_Driver_File extends Xapp_Cache_Driver
             $dir = new SplFileInfo(xapp_get_option(self::PATH, $this));
             if(!$dir->isReadable())
             {
-                throw new Xapp_Cache_Driver_Exception(_("cache directory is not readable"), 1550201);
+                throw new Xapp_Cache_Driver_Exception(__("cache directory is not readable"), 1550201);
             }
             if(!$dir->isWritable())
             {
-                throw new Xapp_Cache_Driver_Exception(_("cache directory is not writable"), 1550202);
+                throw new Xapp_Cache_Driver_Exception(__("cache directory is not writable"), 1550202);
             }
             xapp_set_option(self::PATH, rtrim($dir->getRealPath(), DS) . DS, $this);
       	}
         catch(Exception $e)
         {
-            throw new Xapp_Cache_Driver_Exception(xapp_sprintf(_("cache directory file info error: %d, %s"), $e->getCode(), $e->getMessage()), 1550203);
+            throw new Xapp_Cache_Driver_Exception(xapp_sprintf(__("cache directory file info error: %d, %s"), $e->getCode(), $e->getMessage()), 1550203);
         }
     }
 
@@ -145,7 +145,7 @@ class Xapp_Cache_Driver_File extends Xapp_Cache_Driver
                     return unserialize(substr(trim($value), 10));
                 }
             }else{
-                throw new Xapp_Cache_Driver_Exception(_("unable to read content from cache file"), 1550301);
+                throw new Xapp_Cache_Driver_Exception(__("unable to read content from cache file"), 1550301);
             }
         }else{
             return xapp_default($default);

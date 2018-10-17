@@ -93,7 +93,7 @@ abstract class Xapp_Cache
                 {
                     return self::$_instances[trim((string)$ns)];
                 }else{
-                    throw new Xapp_Cache_Exception(xapp_sprintf(_("no cache instance under ns: %s registered"), $ns), 1530102);
+                    throw new Xapp_Cache_Exception(xapp_sprintf(__("no cache instance under ns: %s registered"), $ns), 1530102);
                 }
             }else{
                 return self::$_instance;
@@ -104,7 +104,7 @@ abstract class Xapp_Cache
             {
                 return self::$_instance;
             }else{
-                throw new Xapp_Cache_Exception(_("can not get current cache class instance since no instance has been set yet"), 1530101);
+                throw new Xapp_Cache_Exception(__("can not get current cache class instance since no instance has been set yet"), 1530101);
             }
         }
     }
@@ -137,7 +137,7 @@ abstract class Xapp_Cache
                 return self::$_instance = new $class($options);
             }
         }else{
-            throw new Xapp_Cache_Exception(xapp_sprintf(_("cache driver: %s does not exist"), $driver), 1530201);
+            throw new Xapp_Cache_Exception(xapp_sprintf(__("cache driver: %s does not exist"), $driver), 1530201);
         }
     }
 
@@ -214,10 +214,10 @@ abstract class Xapp_Cache
             {
                 return call_user_func_array(array($instance, $method), $params);
             }else{
-                throw new Xapp_Cache_Exception(xapp_sprintf(_("method: %s can not be called statically"), $method), 1530501);
+                throw new Xapp_Cache_Exception(xapp_sprintf(__("method: %s can not be called statically"), $method), 1530501);
             }
         }else{
-            throw new Xapp_Cache_Exception(_("no instance found for static cache class overloading"), 1530502);
+            throw new Xapp_Cache_Exception(__("no instance found for static cache class overloading"), 1530502);
         }
    	}
 
