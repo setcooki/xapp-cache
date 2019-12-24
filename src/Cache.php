@@ -15,14 +15,6 @@ xapp_import('xapp.Cache.Exception');
 abstract class Xapp_Cache
 {
     /**
-     * cache option value default expiration when cache key expires after
-     *
-     * @const DEFAULT_EXPIRATION
-     */
-    const DEFAULT_EXPIRATION            = 'XAPP_CACHE_DEFAULT_EXPIRATION';
-
-
-    /**
      * contains the current active last created instance either with instance or factory
      * method
      *
@@ -37,26 +29,6 @@ abstract class Xapp_Cache
      * @var array
      */
     protected static $_instances = array();
-
-    /**
-     * options dictionary for this class containing all data type values
-     *
-     * @var array
-     */
-    public static $optionsDict = array
-    (
-        self::DEFAULT_EXPIRATION        => XAPP_TYPE_INT
-    );
-
-    /**
-     * options mandatory map for this class contains all mandatory values
-     *
-     * @var array
-     */
-    public static $optionsRule = array
-    (
-        self::DEFAULT_EXPIRATION        => 1
-    );
 
 
 
