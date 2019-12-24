@@ -80,10 +80,12 @@ class Xapp_Cache_Driver_File extends Xapp_Cache_Driver
      * xapp options array or object
      *
      * @error 15501
+     * @param null|string $ns expects optional instance namespace identifier
+     * @param null|string $driver expects the cache driver string
      * @param null|mixed $options expects optional xapp option array or object
      * @return Xapp_Cache_Driver_File
      */
-    public static function instance($options = null)
+    public static function instance($ns = null, $driver = null, $options = null)
     {
         if(self::$_instance === null)
         {
