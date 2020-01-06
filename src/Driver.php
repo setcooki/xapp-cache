@@ -25,13 +25,22 @@ abstract class Xapp_Cache_Driver
     
     
     /**
+     * cache option value default expiration when cache key expires after
+     *
+     * @const DEFAULT_EXPIRATION
+     */
+    const DEFAULT_EXPIRATION            = 'XAPP_CACHE_DEFAULT_EXPIRATION';
+
+
+    /**
      * options dictionary for this class containing all data type values
      *
      * @var array
      */
     public static $optionsDict = array
     (
-        self::AUTOPURGE_EXPIRED     => XAPP_TYPE_BOOL
+        self::AUTOPURGE_EXPIRED     => XAPP_TYPE_BOOL,
+        self::DEFAULT_EXPIRATION    => XAPP_TYPE_INT
     );
 
     /**
@@ -41,7 +50,8 @@ abstract class Xapp_Cache_Driver
      */
     public static $optionsRule = array
     (
-        self::AUTOPURGE_EXPIRED     => 0
+        self::AUTOPURGE_EXPIRED     => 0,
+        self::DEFAULT_EXPIRATION    => 1
     );
 
 

@@ -146,10 +146,12 @@ class Xapp_Cache_Driver_Memcached extends Xapp_Cache_Driver
      * xapp options array or object
      *
      * @error 15701
+     * @param null|string $ns expects optional instance namespace identifier
+     * @param null|string $driver expects the cache driver string
      * @param null|mixed $options expects optional xapp option array or object
      * @return Xapp_Cache_Driver_Memcached
      */
-    public static function instance($options = null)
+    public static function instance($ns = null, $driver = null, $options = null)
     {
         if(self::$_instance === null)
         {
